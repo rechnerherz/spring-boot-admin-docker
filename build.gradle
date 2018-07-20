@@ -1,48 +1,29 @@
-buildscript {
-  ext {
-    springBootVersion = '1.4.0.RELEASE'
-  }
-  repositories {
-    mavenCentral()
-  }
-  dependencies {
-    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-  }
+plugins {
+    id 'org.springframework.boot' version '2.0.3.RELEASE'
 }
 
+apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java'
-apply plugin: 'spring-boot'
 
-version = '1.4.1'
+version = '2.0.1'
 
 jar {
-  baseName = 'spring-boot-admin-docker'
-  version = project.version
+    baseName = 'spring-boot-admin-docker'
+    version = project.version
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
-
-dependencyManagement {
-  imports {
-    mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Brixton.SR5'
-  }
-}
-
 
 dependencies {
-  compile('org.springframework.boot:spring-boot-starter')
-  compile('de.codecentric:spring-boot-admin-server:1.4.1')
-  compile('de.codecentric:spring-boot-admin-server-ui:1.4.1')
+    // http://codecentric.github.io/spring-boot-admin/2.0.1/#getting-started
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'de.codecentric:spring-boot-admin-starter-server:2.0.1'
 
-  testCompile('org.springframework.boot:spring-boot-starter-test')
-}
-
-task wrapper(type: Wrapper) {
-  gradleVersion = '3.0'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
 apply from: 'gradle/docker.gradle'

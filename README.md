@@ -1,16 +1,43 @@
-# Spring Boot Admin dockerized
 
-Aim of this project is to be able to run [spring-boot-admin](https://github.com/codecentric/spring-boot-admin) application as a Docker container.
+# Spring Boot Admin 2 dockerized
 
-Docker image is publicly available as [aetas/spring-boot-admin-docker](https://hub.docker.com/r/aetas/spring-boot-admin-docker/).
+This project provides a Docker image for [spring-boot-admin](https://github.com/codecentric/spring-boot-admin). 
+It was forked from <https://github.com/maniekq/spring-boot-admin-docker> to support Spring Boot Admin 2.x.
 
-You can run spring-boot-admin in Docker with this command:
+### Run
+
+The Docker image is available as [darioseidl/spring-boot-admin-docker](https://hub.docker.com/r/darioseidl/spring-boot-admin-docker/).
+
+You can run it with:
 
 `
-docker run -d -p 8090:8080 --name spring-boot-admin aetas/spring-boot-admin-docker:1.4.1
+docker run -d -p 8080:8080 --name spring-boot-admin darioseidl/spring-boot-admin-docker:2.0.1
 `
 
-Now just go to <http://localhost:8090> (or <http://your-docker:8090>) with your browser.
+The admin UI is then available at <http://localhost:8080> (or <http://your-docker-ip:8080>).
 
+### Build and run local image
 
-More detailed description in blog post [here](http://aetas.pl/?p=347).
+Build with:
+
+```
+./gradlew bootJar
+docker build -t spring-boot-admin-docker:2.0.1 docker
+
+```
+
+Run with:
+```
+docker run -d -p 8080:8080 --name spring-boot-admin-docker spring-boot-admin-docker:2.0.1
+```
+
+### Push
+
+```
+docker tag spring-boot-admin-docker:2.0.1 $DOCKER_ID_USER/spring-boot-admin-docker:2.0.1
+docker push $DOCKER_ID_USER/spring-boot-admin-docker:2.0.1
+```
+
+## Original Blog Post
+
+The original blog post can be found [here](http://aetas.pl/?p=347).

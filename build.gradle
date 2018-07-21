@@ -19,8 +19,10 @@ repositories {
 }
 
 dependencies {
-    // http://codecentric.github.io/spring-boot-admin/2.0.1/#getting-started
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-security'
+
+    // http://codecentric.github.io/spring-boot-admin/2.0.1/#getting-started
     compile 'de.codecentric:spring-boot-admin-starter-server:2.0.1'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'

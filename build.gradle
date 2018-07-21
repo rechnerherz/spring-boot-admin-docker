@@ -26,8 +26,8 @@ dependencies {
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
-compileJava {
+bootJar {
     doLast {
-        file('build/libs/spring-boot-admin-docker-2.0.1.jar').renameTo(file('docker/spring-boot-admin-docker-2.0.1.jar'))
+        file('build/libs/spring-boot-admin-docker-2.0.1.jar').renameTo(file('docker/spring-boot-admin-docker.jar'))
     }
 }

@@ -2,8 +2,8 @@ FROM java:8-jre-alpine
 
 EXPOSE 8080
 
-### Add microservice artifact
-COPY spring-boot-admin-docker-2.0.1.jar /opt/spring-boot-admin-docker-2.0.1.jar
+COPY spring-boot-admin-docker.jar /opt/spring-boot-admin-docker.jar
 
 WORKDIR /opt
-ENTRYPOINT ["java", "-jar", "spring-boot-admin-docker-2.0.1.jar"]
+
+ENTRYPOINT ["java", "-jar", "spring-boot-admin-docker.jar"]
